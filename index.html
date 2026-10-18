@@ -1164,12 +1164,12 @@ function buildNav(){
       rb.onclick=()=>{sel={chapter:ci,lesson:'review'}; render();};
       d.appendChild(rb);
     }
-    if(ci===0){
+    if(ci<=3){
       const tb = document.createElement('button');
       tb.className = 'lbtn';
       tb.style.color='var(--acc2)'; tb.style.fontWeight='700';
       tb.innerHTML = `<span>⏱️ اختبارات تصحيح تلقائي (مؤقتة)</span>`;
-      tb.onclick=()=>{ location.href='tests-ch1.html'; };
+      tb.onclick=()=>{ location.href='tests-ch'+(ci+1)+'.html'; };
       d.appendChild(tb);
     }
     if(ASSESS[c.lessons[0].num]){
@@ -1440,6 +1440,11 @@ function finalMonthly(chNum){
     <button class="reveal-btn" onclick="renderMonthly('${chNum}')">إعادة الامتحان</button>`;
 }
 
+const POSTERS={"2-1":"poster-2-1.png","2-2":"poster-2-2.png"};
+function posterCard(num){
+  const p=POSTERS[num]; if(!p) return '';
+  return `<div class="card"><h2>🖼️ البوستر التوضيحي للدرس</h2><p style="color:var(--ink-soft);font-size:.88rem">اضغط على الصورة لفتحها بالحجم الكامل وتكبيرها.</p><a href="${p}" target="_blank" rel="noopener"><img src="${p}" alt="بوستر توضيحي للدرس ${num}" loading="lazy" style="width:100%;height:auto;border-radius:12px;border:1px solid #d6dbe6;display:block"></a><p style="margin-top:8px"><a class="btn" href="${p}" download style="display:inline-block;padding:6px 14px;border-radius:10px;text-decoration:none">⬇️ تحميل البوستر</a></p></div>`;
+}
 function renderReady(l){
   const main = document.getElementById('main');
   main.innerHTML = `
@@ -1447,6 +1452,7 @@ function renderReady(l){
     <h1 class="lt">${l.title}</h1>
     <div class="card"><h2>🎯 أهداف التعلم</h2><ul class="pt">${l.objectives.map(o=>`<li>${o}</li>`).join('')}</ul></div>
     <div class="card"><h2>⭐ الفكرة الرئيسية</h2><p>${l.mainIdea}</p></div>
+    ${posterCard(l.num)}
     ${l.sections.map(s=>`<div class="card"><h2>${s.h}</h2>${s.html}</div>`).join('')}
     <div class="card"><h2>📌 أهم النقاط</h2><ul class="pt">${l.keyPoints.map(p=>`<li>${p}</li>`).join('')}</ul></div>
     <div class="card"><h2>📖 مراجعة سريعة — المصطلحات الأساسية</h2><div class="gloss">${l.glossary.map(g=>`<div class="gterm"><b>${g.t}</b><br>${g.d}</div>`).join('')}</div></div>
