@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
+<head><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>منصة البرمجة والذكاء الاصطناعي — الصف الثاني الثانوي</title>
@@ -1451,7 +1451,7 @@ window.openPoster=function(num){
 };
 function posterCard(num){
   const p=POSTERS[num]; if(!p) return '';
-  return `<div class="card"><h2>🖼️ البوستر التوضيحي للدرس</h2><p style="color:var(--ink-soft);font-size:.88rem">اضغط على الصورة لعرضها بالحجم الكامل (يمكنك تحريكها وتكبيرها).</p><img src="${p}" alt="بوستر توضيحي للدرس ${num}" onclick="openPoster('${num}')" style="width:100%;height:auto;border-radius:12px;border:1px solid #d6dbe6;display:block;cursor:zoom-in"><p style="margin-top:8px"><a class="btn" href="${p}" download="poster-${num}.webp" style="display:inline-block;padding:6px 14px;border-radius:10px;text-decoration:none">⬇️ تحميل البوستر</a></p></div>`;
+  return `<div class="card"><h2>🖼️ البوستر التوضيحي للدرس</h2><p style="color:var(--ink-soft);font-size:.88rem">اضغط على الصورة لعرضها بالحجم الكامل (يمكنك تحريكها وتكبيرها).</p><img src="${p}" alt="بوستر توضيحي للدرس ${num}" onclick="openPoster('${num}')" onerror="this.outerHTML='<p style=color:#c0392b;font-weight:700>⚠️ تعذّر عرض صورة البوستر على هذا المتصفح</p>'" style="width:100%;height:auto;border-radius:12px;border:1px solid #d6dbe6;display:block;cursor:zoom-in"><p style="margin-top:8px"><a class="btn" href="${p}" download="poster-${num}.webp" style="display:inline-block;padding:6px 14px;border-radius:10px;text-decoration:none">⬇️ تحميل البوستر</a></p></div>`;
 }
 function renderReady(l){
   const main = document.getElementById('main');
@@ -1553,7 +1553,7 @@ function render(){
 }
 render();
 </script>
-</body>
+<div id="verBadge" style="position:fixed;left:8px;bottom:8px;z-index:50;background:#0A2A72;color:#fff;font:700 11px Cairo,sans-serif;padding:3px 9px;border-radius:10px;opacity:.85;direction:ltr">v19-10 · posters:1-1,2-1,2-2</div></body>
 </html>
 
 </body></html>
